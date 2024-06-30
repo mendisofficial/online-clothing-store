@@ -20,8 +20,11 @@ final class UserType extends AbstractMigration
     public function change(): void
     {
         // create the table
-        $table = $this->table('user_type');
-        $table->addColumn('id', 'integer',['auto_increment' => true, 'notnull' => true]);
-        $table->addColumn('type', 'string', ['limit' => 20, 'notnull' => true]);
+        $user_type = $this->table('user_type', ['id' => false, 'primary_key' => ['id']]);
+
+        $user_type
+            ->addColumn('id', 'integer', ['signed' => false, 'identity' => true])
+            ->addColumn('type', 'string', ['limit' => 20, 'null' => false])
+            ->create();
     }
 }

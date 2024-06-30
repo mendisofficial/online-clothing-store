@@ -1,5 +1,10 @@
 <?php
 
+require 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
 return
 [
     'paths' => [
@@ -20,11 +25,11 @@ return
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'development_db',
-            'user' => 'root',
-            'pass' => '',
-            'port' => '3306',
+            'host' => $_ENV['MYSQL_HOST'],
+            'name' => $_ENV['MYSQL_DATABASE'],
+            'user' => $_ENV['MYSQL_USER'],
+            'pass' => $_ENV['MYSQL_PASSWORD'],
+            'port' => $_ENV['MYSQL_PORT'],
             'charset' => 'utf8',
         ],
         'testing' => [
