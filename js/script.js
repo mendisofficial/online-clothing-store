@@ -83,5 +83,27 @@ function signin(){
 
 // admin signin function
 function adminSignin(){
-    
+    let username = document.getElementById("admin-username");
+    let password = document.getElementById("admin-password");
+
+    let form = new FormData();
+    form.append("username", username.value);
+    form.append("password", password.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/adminsignin.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                window.location.href = "admin_dashboard.php";
+            } else {
+                document.getElementById("admin-signin-msg-box").innerHTML = response;
+                document.getElementById("admin-signin-msg-box").className = "alert alert-danger";
+                document.getElementById("admin-signin-msg-div").classList.remove("d-none");
+            }
+        }
+    }
 }
