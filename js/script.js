@@ -80,3 +80,8 @@ function signin(){
         }
     }
 }
+
+// admin signin function
+function adminSignin(){
+    
+}
