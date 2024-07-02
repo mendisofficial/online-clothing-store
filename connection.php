@@ -22,7 +22,6 @@ class Database{
 
     public static function search($q){
         Database::setupConnection();
-        $resultset = Database::$connection->query($q);
-        return $resultset;
+        return Database::$connection->query($q);
     }
 }
