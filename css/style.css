@@ -1,0 +1,20 @@
+.signin-box{
+    width: 350px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgb(250, 250, 250);
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.signup-box{
+    width: 550px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgb(250, 250, 250); 
+}
