@@ -10,23 +10,35 @@
 <!-- Sign In box start -->
 <div class="signin-box" id="signin-box">
     <h2 class="text-center">Sign In</h2>
+
+    <!-- checking if the user is logged in -->
+    <?php
+        $username = "";
+        $password = "";
+
+        if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+            $username = $_COOKIE['username'];
+            $password = $_COOKIE['password'];
+        }
+    ?>
+
     <div class="mt-3">
         <label for="form-label">Username:</label>
-        <input type="text" id="username" class="form-control">
+        <input type="text" id="username" value="<?php echo $username ?>" class="form-control">
     </div>
     <div class="mt-2">
         <label for="form-label">Password:</label>
-        <input type="password" id="password" class="form-control">
+        <input type="password" id="password" value="<?php echo $password ?>" class="form-control">
     </div>
     <div class="mt-2">
         <input type="checkbox" id="remember" class="form-check-input">
         <label for="form-label">Remember Me</label>
     </div>
-    <div class="mt-2 d-none">
-        <div class="alert alert-danger"></div>
+    <div class="mt-2 d-none" id="signin-msg-div">
+        <div class="alert alert-danger" id="signin-msg-box"></div>
     </div>
     <div class="mt-2">
-        <button class="btn btn-secondary col-12">Sign In</button>
+        <button class="btn btn-secondary col-12" onclick="signin();">Sign In</button>
     </div>
     <div class="mt-2">
         <button class="btn btn-outline-secondary col-12" onclick="changeView();">New to Online Clothing Store? Sign Up</button>
