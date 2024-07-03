@@ -107,3 +107,55 @@ function adminSignin(){
         }
     }
 }
+
+// loading users on admin dashboard user management
+function loadUser(){
+    let request = new XMLHttpRequest();
+    request.open("GET", "processors/admin_load_users.php", true);
+    request.send();
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            document.getElementById("users-table").innerHTML = response;
+        }
+    }
+}
+
+// update user status
+function updateUserStatus(){
+    let userId = document.getElementById("user-id");
+
+    let form = new FormData();
+    form.append("userId", userId.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_update_user_status.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                loadUser();
+                userId.value = "";
+                document.getElementById("admin-um-msg").innerHTML = "User status updated successfully.";
+                document.getElementById("admin-um-msg").className = "alert alert-success";
+                document.getElementById("admin-um-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-um-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-um-msg").innerHTML = response;
+                document.getElementById("admin-um-msg").className = "alert alert-danger";
+                document.getElementById("admin-um-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}
+
+// reload page
+function reload(){
+    location.reload();
+}

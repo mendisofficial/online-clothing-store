@@ -13,13 +13,24 @@ if(isset($_SESSION['admin'])){
         <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body class="admin-body">
+    <body class="admin-body" onload="loadUser();">
         <!-- nav bar start -->
         <?php include 'components/admin-nav.php'; ?>
         <!-- nav bar end -->
 
         <div class="col-10">
             <h2 class="text-center">User Management</h2>
+            <!-- user status change start -->
+            <div class="row d-flex justify-content-end mt-4">
+                <div class="d-none" id="admin-um-msg-div" onclick="reload();">
+                    <div class="alert alert-danger" id="admin-um-msg"></div>
+                </div>
+                <div class="col-2">
+                    <input type="text" id="user-id" placeholder="Enter user id" class="form-control">
+                </div>
+                <button class="btn btn-outline-light col-2" onclick="updateUserStatus();">Change status</button>
+            </div>
+            <!-- user status change end -->
             <div class="mt-3">
                 <table class="table table-hover">
                 <thead>
@@ -32,47 +43,10 @@ if(isset($_SESSION['admin'])){
                     <th scope="col">Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Sahan</td>
-                        <td>Perera</td>
-                        <td>sahan@gmail.com</td>
-                        <td>0778761458</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Sahan</td>
-                        <td>Perera</td>
-                        <td>sahan@gmail.com</td>
-                        <td>0778761458</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Sahan</td>
-                        <td>Perera</td>
-                        <td>sahan@gmail.com</td>
-                        <td>0778761458</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Sahan</td>
-                        <td>Perera</td>
-                        <td>sahan@gmail.com</td>
-                        <td>0778761458</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Sahan</td>
-                        <td>Perera</td>
-                        <td>sahan@gmail.com</td>
-                        <td>0778761458</td>
-                        <td>Active</td>
-                    </tr>
+                <tbody id="users-table">
+                    <!-- table row start -->
+
+                    <!-- table row end -->
                 </tbody>
                 </table>
             </div>
