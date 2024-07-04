@@ -57,10 +57,11 @@ if(isset($_SESSION['admin'])){
             <p class="text-center">&copy; 2024 online clothing store | All rights reserved</p>
          </div>
         <!-- footer end -->
+         
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 
-    <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
     </html>
     <?php
 } else {
