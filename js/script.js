@@ -159,3 +159,131 @@ function updateUserStatus(){
 function reload(){
     location.reload();
 }
+
+// admin brand register
+function brandReg(){
+    let brandName = document.getElementById("admin-brand");
+
+    let form = new FormData();
+    form.append("brandName", brandName.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_brand_reg.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                brandName.value = "";
+                document.getElementById("admin-brand-msg").innerHTML = "Brand registered successfully.";
+                document.getElementById("admin-brand-msg").className = "alert alert-success";
+                document.getElementById("admin-brand-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-brand-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-brand-msg").innerHTML = response;
+                document.getElementById("admin-brand-msg").className = "alert alert-danger";
+                document.getElementById("admin-brand-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}
+
+// admin category register
+function categoryReg(){
+    let categoryName = document.getElementById("admin-category");
+
+    let form = new FormData();
+    form.append("categoryName", categoryName.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_category_reg.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                categoryName.value = "";
+                document.getElementById("admin-category-msg").innerHTML = "Category registered successfully.";
+                document.getElementById("admin-category-msg").className = "alert alert-success";
+                document.getElementById("admin-category-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-category-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-category-msg").innerHTML = response;
+                document.getElementById("admin-category-msg").className = "alert alert-danger";
+                document.getElementById("admin-category-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}
+
+// admin color register
+function colorReg(){
+    let colorName = document.getElementById("admin-color");
+
+    let form = new FormData();
+    form.append("colorName", colorName.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_color_reg.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                colorName.value = "";
+                document.getElementById("admin-color-msg").innerHTML = "Color registered successfully.";
+                document.getElementById("admin-color-msg").className = "alert alert-success";
+                document.getElementById("admin-color-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-color-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-color-msg").innerHTML = response;
+                document.getElementById("admin-color-msg").className = "alert alert-danger";
+                document.getElementById("admin-color-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}
+
+// admin size register
+function sizeReg(){
+    let sizeName = document.getElementById("admin-size");
+
+    let form = new FormData();
+    form.append("sizeName", sizeName.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_size_reg.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                sizeName.value = "";
+                document.getElementById("admin-size-msg").innerHTML = "Size registered successfully.";
+                document.getElementById("admin-size-msg").className = "alert alert-success";
+                document.getElementById("admin-size-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-size-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-size-msg").innerHTML = response;
+                document.getElementById("admin-size-msg").className = "alert alert-danger";
+                document.getElementById("admin-size-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}

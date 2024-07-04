@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="admin_dashboard.php">
                 <img src="assets/img/icon.ico" height="30">
                 Online Clothing Store
             </a>
@@ -10,10 +10,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">User Management</a>
+                    <a class="nav-link" aria-current="page" href="admin_dashboard.php">User Management</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Product Management</a>
+                    <a class="nav-link" aria-current="page" href="admin_product_management.php">Product Management</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Stock Management</a>
