@@ -338,3 +338,42 @@ function productReg(){
         }
     }
 }
+
+// admin update stock
+function updateStock(){
+    productId = document.getElementById("admin-stock-product-select");
+    productQuantity = document.getElementById("admin-stock-quantity");
+    productUnitPrice = document.getElementById("admin-stock-unit-price");
+
+    let form = new FormData();
+    form.append("productId", productId.value);
+    form.append("productQuantity", productQuantity.value);
+    form.append("productUnitPrice", productUnitPrice.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_update_stock.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            console.log(response);
+            if(response == "Success"){
+                productId.value = "";
+                productQuantity.value = "";
+                productUnitPrice.value = "";
+                document.getElementById("admin-stock-msg").innerHTML = "Stock updated successfully.";
+                document.getElementById("admin-stock-msg").className = "alert alert-success";
+                document.getElementById("admin-stock-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-stock-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-stock-msg").innerHTML = response;
+                document.getElementById("admin-stock-msg").className = "alert alert-danger";
+                document.getElementById("admin-stock-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}

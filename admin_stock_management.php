@@ -116,7 +116,13 @@ if (isset($_SESSION['admin'])) {
                     <label for="form-lable">Product:</label>
                     <select id="admin-stock-product-select" class="form-select">
                         <option value="0">Select product</option>
-                        <option value="1">Adidas Black Small Shirt</option>
+                        <?php
+                        $result = Database::search("SELECT * FROM product");
+                        for ($i = 0; $i < $result->num_rows; $i++) {
+                            $data = $result->fetch_assoc();
+                            echo "<option value='".$data['id']."'>".$data['name']."</option>";
+                        }
+                        ?>
                     </select>
                 </div>
 
@@ -128,6 +134,10 @@ if (isset($_SESSION['admin'])) {
                 <div class="mb-3">
                     <label for="form-lable">Unit price:</label>
                     <input type="text" id="admin-stock-unit-price" class="form-control">
+                </div>
+
+                <div class="d-none" id="admin-stock-msg-div">
+                    <div class="alert alert-danger" id="admin-stock-msg"></div>
                 </div>
 
                 <div class="d-grid">
