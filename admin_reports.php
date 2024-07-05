@@ -21,13 +21,13 @@ if (isset($_SESSION['admin'])) {
             <h2 class="text-center">Reports</h2>
             <div class="row mt-5">
                 <div class="col-4">
-                    <button class="btn btn-outline-info col-12">Stock report</button>
+                    <a href="admin_reports_stock.php"><button class="btn btn-outline-info col-12">Stock report</button></a>
                 </div>
                 <div class="col-4">
-                    <button class="btn btn-outline-info col-12">Product report</button>
+                    <a href="admin_reports_product.php"><button class="btn btn-outline-info col-12">Product report</button></a>
                 </div>
                 <div class="col-4">
-                    <button class="btn btn-outline-info col-12">User report</button>
+                    <a href="admin_reports_user.php"><button class="btn btn-outline-info col-12">User report</button></a>
                 </div>
             </div>
         </div>    

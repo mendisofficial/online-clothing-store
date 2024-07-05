@@ -377,3 +377,10 @@ function updateStock(){
         }
     }
 }
+
+// print screen
+function printScreen(){
+    document.documentElement.removeAttribute("data-bs-theme");
+    window.print();
+    location.reload();
+}
