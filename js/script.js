@@ -287,3 +287,54 @@ function sizeReg(){
         }
     }
 }
+
+// admin products register
+function productReg(){
+    productName = document.getElementById("admin-stock-product");
+    productBrand = document.getElementById("admin-stock-brand");
+    productCategory = document.getElementById("admin-stock-category");
+    productColor = document.getElementById("admin-stock-color");
+    productSize = document.getElementById("admin-stock-size");
+    productDescription = document.getElementById("admin-stock-description");
+    productImage = document.getElementById("admin-stock-image");
+
+    let form = new FormData();
+    form.append("productName", productName.value);
+    form.append("productBrand", productBrand.value);
+    form.append("productCategory", productCategory.value);
+    form.append("productColor", productColor.value);
+    form.append("productSize", productSize.value);
+    form.append("productDescription", productDescription.value);
+    // use files object to append the image
+    form.append("productImage", productImage.files[0]);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/admin_product_reg.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "Success"){
+                productName.value = "";
+                productBrand.value = "";
+                productCategory.value = "";
+                productColor.value = "";
+                productSize.value = "";
+                productDescription.value = "";
+                productImage.value = "";
+                document.getElementById("admin-product-msg").innerHTML = "Product registered successfully.";
+                document.getElementById("admin-product-msg").className = "alert alert-success";
+                document.getElementById("admin-product-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("admin-product-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("admin-product-msg").innerHTML = response;
+                document.getElementById("admin-product-msg").className = "alert alert-danger";
+                document.getElementById("admin-product-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+}
