@@ -97,7 +97,7 @@ if (isset($_SESSION['admin'])) {
 
                 <div class="mb-3">
                     <label for="form-lable">Image:</label>
-                    <input type="file" id="admin-stock-image" class="form-control" multiple>
+                    <input type="file" id="admin-stock-image" class="form-control">
                 </div>
 
                 <div class="d-none" id="admin-product-msg-div">
