@@ -27,7 +27,7 @@ final class Stock extends AbstractMigration
             ->addColumn('product_id', 'integer', ['signed' => false, 'null' => false])
             ->addColumn('price', 'double', ['null' => false])
             ->addColumn('quantity', 'integer', ['signed' => false, 'null' => false])
-            ->addColumn('status', 'string', ['limit' => 45, 'null' => false])
+            ->addColumn('status', 'integer', ['default' => 1, 'null' => false])
             ->create();
 
         // relationships
