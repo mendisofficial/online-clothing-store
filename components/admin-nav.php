@@ -19,7 +19,7 @@
                     <a class="nav-link" aria-current="page" href="admin_stock_management.php">Stock Management</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Reports</a>
+                    <a class="nav-link" aria-current="page" href="admin_reports.php">Reports</a>
                 </li>
             </ul>
             </div>
