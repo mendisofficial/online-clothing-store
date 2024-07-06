@@ -17,7 +17,7 @@ Add your database credentials to the .env file
 
 Then sipn up the PHP development server
 ```bash
-php -S localhost:8000
+php -S 127.0.0.1:8000
 ```
 
 ## Phinx

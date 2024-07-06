@@ -21,7 +21,7 @@ if (isset($_SESSION['admin'])) {
             <a href="admin_reports.php"><img src="assets/img/back.png" alt="back-icon" height="25"></a>
         </div>
 
-        <div class="container mt-3" id="stock-report">
+        <div class="container mt-3" id="print-area">
             <h2 class="text-center">User Report</h2>
             <table class="table table-hover mt-5">
                 <thead>

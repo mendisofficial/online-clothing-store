@@ -380,7 +380,13 @@ function updateStock(){
 
 // print screen
 function printScreen(){
+    let originalContent = document.body.innerHTML;
+    let printContent = document.getElementById("print-area").innerHTML;
+
     document.documentElement.removeAttribute("data-bs-theme");
+    document.body.innerHTML = printContent;
     window.print();
-    location.reload();
+    document.body.innerHTML = originalContent;
+    document.documentElement.setAttribute("data-bs-theme", "dark");
+
 }
