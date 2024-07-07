@@ -390,3 +390,41 @@ function printScreen(){
     document.documentElement.setAttribute("data-bs-theme", "dark");
 
 }
+
+// load products on home page
+function loadProducts(page){
+    let form = new FormData();
+    form.append("page", page);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/load_products.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            document.getElementById("products-load").innerHTML = response;
+        }
+    }
+}
+
+// basic product search
+function searchProducts(page){
+    let product = document.getElementById("product-search");
+    
+    let form = new FormData();
+    form.append("product", product.value);
+    form.append("page", page);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/search_products.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            // console.log(response);
+            document.getElementById("products-load").innerHTML = response;
+        }
+    }
+}
