@@ -428,3 +428,49 @@ function searchProducts(page){
         }
     }
 }
+
+// view advanced search
+function viewAdvancedSearch(){
+    let advancedSearch = document.getElementById("advanced-search");
+    advancedSearch.classList.toggle("d-none");
+}
+
+// advanced product search
+function advSearchProducts(page) {
+    let color = document.getElementById("color");
+    let category = document.getElementById("category");
+    let brand = document.getElementById("brand");
+    let size = document.getElementById("size");
+    let minPrice = document.getElementById("min-price");
+    let maxPrice = document.getElementById("max-price");
+
+    var form = new FormData();
+    form.append("page", page);
+    form.append("color", color.value);
+    form.append("category", category.value);
+    form.append("brand", brand.value);
+    form.append("size", size.value);
+    form.append("minPrice", minPrice.value);
+    form.append("maxPrice", maxPrice.value);
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "processors/adv_search_products.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 & request.status == 200) {
+            var response = request.responseText;
+            console.log(response);
+            document.getElementById("products-load").innerHTML = response;
+
+            color.value = "0";
+            category.value = "0";
+            brand.value = "0";
+            size.value = "0";
+            minPrice.value = "";
+            maxPrice.value = "";
+        }
+    };
+
+    
+}
