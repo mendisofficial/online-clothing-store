@@ -26,7 +26,7 @@ if ($result2->num_rows > 0) {
         <!-- product card strart -->
         <div class="col-3 mt-5 d-flex justify-content-center">
             <div class="card" style="width: 300px;">
-                <img src="<?php echo $data['image'] ?>" class="card-img-top">
+                <a href="single-product-view.php?stock=<?php echo $data['stock_id'] ?>"><img src="<?php echo $data['image'] ?>" class="card-img-top"></a>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $data['product_name'] ?></h5>
                     <p class="card-text"><?php echo $data['description'] ?></p>

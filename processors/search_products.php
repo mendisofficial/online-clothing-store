@@ -12,7 +12,7 @@ if ($page != 0) {
     $pageNumber = 1;
 }
 
-$query = "SELECT `stock`.`id` AS stock_id, `stock`.`price`, `stock`.`quantity`, `stock`.`status`, `product`.`id` AS product_id, `product`.`name` AS product_name, `product`.`description`, `product`.`image_path` AS path, `brand`.`name` AS brand_name
+$query = "SELECT `stock`.`id` AS stock_id, `stock`.`price`, `stock`.`quantity`, `stock`.`status`, `product`.`id` AS product_id, `product`.`name` AS product_name, `product`.`description`, `product`.`image_path` AS `path`, `brand`.`name` AS brand_name
 FROM `stock`
 INNER JOIN `product` ON `stock`.`product_id` = `product`.`id`
 INNER JOIN `brand` ON `product`.`brand_id` = `brand`.`id`
@@ -36,7 +36,7 @@ if ($result2->num_rows > 0) {
         <!-- product card start -->
         <div class="col-3 mt-5 d-flex justify-content-center">
             <div class="card" style="width: 300px;">
-                <img src="<?php echo $data['path'] ?>" class="card-img-top">
+            <a href="single-product-view.php?stock=<?php echo $data['stock_id'] ?>"><img src="<?php echo $data['path'] ?>" class="card-img-top"></a>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $data['product_name'] ?></h5>
                     <p class="card-text"><?php echo $data['description'] ?></p>
