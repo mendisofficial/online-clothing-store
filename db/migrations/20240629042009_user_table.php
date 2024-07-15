@@ -33,6 +33,9 @@ final class UserTable extends AbstractMigration
             ->addColumn('password', 'string', ['limit' => 45, 'null' => false])
             ->addColumn('status', 'integer', ['default' => 1, 'null' => false])
             ->addColumn('user_type_id', 'integer', ['signed' => false, 'null' => true])
+            ->addColumn('address_number', 'string', ['limit' => 10, 'null' => true])
+            ->addColumn('address_street', 'string', ['limit' => 100, 'null' => true])
+            ->addColumn('address_city', 'string', ['limit' => 100, 'null' => true])
             ->save();
 
         // relationships
