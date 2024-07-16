@@ -80,7 +80,7 @@ if (!isset($user)) {
                         </div>
                         <div class="col-6">
                             <label for="form-label">Password</label>
-                            <input type="password" class="form-control" value="<?php echo $data["password"] ?>" id="pw">
+                            <input type="password" class="form-control" value="<?php echo $data["password"] ?>" id="password">
                         </div>
                     </div>
                     <h5 class="mt-3">Shipping Address</h5>
@@ -88,19 +88,22 @@ if (!isset($user)) {
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="form-label">No</label>
-                            <input type="text" class="form-control" id="no" value="<?php echo $data["address_number"] ?>">
+                            <input type="text" class="form-control" id="address_number" value="<?php echo $data["address_number"] ?>">
                         </div>
                         <div class="col-9">
                             <label for="form-label">Street</label>
-                            <input type="text" class="form-control" id="line1" value="<?php echo $data["address_street"] ?>">
+                            <input type="text" class="form-control" id="address_street" value="<?php echo $data["address_street"] ?>">
                         </div>
                     </div>
                     <div class="mt-3">
                         <label for="form-label">City</label>
-                        <input type="text" class="form-control" id="line2" value="<?php echo $data["address_city"] ?>">
+                        <input type="text" class="form-control" id="address_city" value="<?php echo $data["address_city"] ?>">
+                    </div>
+                    <div class="mt-3 d-none" id="profile-data-msg-div">
+                        <div class="alert alert-danger" id="profile-data-msg"></div>
                     </div>
                     <div class="mt-3">
-                        <button class="btn btn-outline-info col-12" onclick="updateData();">Update</button>
+                        <button class="btn btn-outline-info col-12" onclick="profileData();">Update</button>
                     </div>
                 </div>
             </div>

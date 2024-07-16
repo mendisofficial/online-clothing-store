@@ -498,3 +498,49 @@ function profileImage(){
         }
     }
 }
+
+// profile update
+function profileData(){
+    let firstname = document.getElementById("fname");
+    let lastname = document.getElementById("lname");
+    let email = document.getElementById("email");
+    let mobile = document.getElementById("mobile");
+    let password = document.getElementById("password");
+    let addressNumber = document.getElementById("address_number");
+    let addressStreet = document.getElementById("address_street");
+    let addressCity = document.getElementById("address_city");
+
+    let form = new FormData();
+    form.append("firstname", firstname.value);
+    form.append("lastname", lastname.value);
+    form.append("email", email.value);
+    form.append("mobile", mobile.value);
+    form.append("password", password.value);
+    form.append("addressNumber", addressNumber.value);
+    form.append("addressStreet", addressStreet.value);
+    form.append("addressCity", addressCity.value);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/profile_data.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            // console.log(response);
+            if (response == "Success") {
+                document.getElementById("profile-data-msg").innerHTML = "Profile updated successfully.";
+                document.getElementById("profile-data-msg").className = "alert alert-success";
+                document.getElementById("profile-data-msg-div").classList.remove("d-none");
+                // remove the alert after 5 seconds
+                setTimeout(function(){
+                    document.getElementById("profile-data-msg-div").classList.add("d-none");
+                }, 5000);
+            } else {
+                document.getElementById("profile-data-msg").innerHTML = response;
+                document.getElementById("profile-data-msg").className = "alert alert-danger";
+                document.getElementById("profile-data-msg-div").classList.remove("d-none");
+            }
+        }
+    }
+} 
