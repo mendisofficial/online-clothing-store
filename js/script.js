@@ -543,4 +543,21 @@ function profileData(){
             }
         }
     }
-} 
+}
+
+// user signout
+function signout(){
+    let request = new XMLHttpRequest();
+    request.open("GET", "processors/signout.php", true);
+    request.send();
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if(response == "success"){
+                alert("You have been signed out.");
+                reload();
+            }
+        }
+    }
+}
