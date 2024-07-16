@@ -471,6 +471,30 @@ function advSearchProducts(page) {
             maxPrice.value = "";
         }
     };
+}
 
-    
+// profile image upload
+function profileImage(){
+    console.log("Image uploading...");
+    let imageUploader = document.getElementById("imgUploader");
+
+    let form = new FormData();
+    form.append("image", imageUploader.files[0]);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/profile_image.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            if (response == "Success") {
+                reload();
+            } else {
+                document.getElementById("profile-image-msg").innerHTML = response;
+                document.getElementById("profile-image-msg").className = "alert alert-danger";
+                document.getElementById("profile-image-msg-div").classList.remove("d-none");
+            }
+        }
+    }
 }
