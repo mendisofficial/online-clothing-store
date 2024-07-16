@@ -36,6 +36,7 @@ final class UserTable extends AbstractMigration
             ->addColumn('address_number', 'string', ['limit' => 10, 'null' => true])
             ->addColumn('address_street', 'string', ['limit' => 100, 'null' => true])
             ->addColumn('address_city', 'string', ['limit' => 100, 'null' => true])
+            ->addColumn('image_path', 'string', ['limit' => 100, 'null' => true])
             ->save();
 
         // relationships
