@@ -17,7 +17,7 @@
                         <a class="nav-link" aria-current="page" href="#">Purchase History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Cart</a>
+                        <a class="nav-link" aria-current="page" href="cart.php">Cart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" onclick="signout();" href="#">Sign Out</a>
