@@ -561,3 +561,48 @@ function signout(){
         }
     }
 }
+
+// add to cart
+function addToCart(stockId){
+    let quantity = document.getElementById("qty").value;
+
+    if (quantity == "") {
+        document.getElementById("spv-msg").innerHTML = "Please enter quantity.";
+        document.getElementById("spv-msg").className = "alert alert-danger";
+        document.getElementById("spv-msg-div").classList.remove("d-none");
+        // remove the alert after 5 seconds
+        setTimeout(function(){
+            document.getElementById("spv-msg-div").classList.add("d-none");
+        }, 5000);
+    } else {
+        let form = new FormData();
+        form.append("stockId", stockId);
+        form.append("quantity", quantity);
+
+        let request = new XMLHttpRequest();
+        request.open("POST", "processors/add_to_cart.php", true);
+        request.send(form);
+
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                let response = request.responseText;
+                // console.log(response);
+                if(response == "Added to cart"){
+                    document.getElementById("spv-msg").innerHTML = "Item added to cart.";
+                    document.getElementById("spv-msg").className = "alert alert-success";
+                    document.getElementById("spv-msg-div").classList.remove("d-none");
+                    // remove the alert after 5 seconds
+                    setTimeout(function(){
+                        document.getElementById("spv-msg-div").classList.add("d-none");
+                    }, 5000);
+                } else {
+                    document.getElementById("spv-msg").innerHTML = response;
+                    document.getElementById("spv-msg").className = "alert alert-danger";
+                    document.getElementById("spv-msg-div").classList.remove("d-none");
+                }
+                
+                quantity = "";
+            }
+        }
+    }
+}

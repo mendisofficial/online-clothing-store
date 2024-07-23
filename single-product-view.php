@@ -70,7 +70,7 @@ WHERE `stock`.`id` = $stockID";
                     <p class="mt-auto"><?php echo $data['description'] ?></p>
                     <div class="row">
                         <div class="col-3">
-                            <input type="number" placeholder="Qty" class="form-control" />
+                            <input type="number" placeholder="Qty" class="form-control" id="qty" />
                         </div>
                         <div class="col-6 mt-2">
                             <h6 class="text-warning">Available Quanity : <?php echo $data['quantity'] ?></h6>
@@ -78,9 +78,11 @@ WHERE `stock`.`id` = $stockID";
                     </div>
                     <h5 class="mt-3">Price : <?php echo $data['price'] ?> LKR</h5>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-outline-primary col-6">Add to cart</a>
+                        <a href="#" class="btn btn-outline-primary col-6" onclick="addToCart(<?php echo $data['stock_id'] ?>);">Add to cart</a>
                         <a href="#" class="btn btn-primary col-6 ms-2">Buy now</a>
-
+                    </div>
+                    <div class="mt-3 d-none" id="spv-msg-div">
+                        <div class="alert alert-danger" id="spv-msg"></div>
                     </div>
                 </div>
             </div>
