@@ -600,8 +600,103 @@ function addToCart(stockId){
                     document.getElementById("spv-msg").className = "alert alert-danger";
                     document.getElementById("spv-msg-div").classList.remove("d-none");
                 }
-                
+
                 quantity = "";
+            }
+        }
+    }
+}
+
+// cart loading on cart page
+function loadCart(){
+    let request = new XMLHttpRequest();
+    request.open("GET", "processors/load_cart.php", true);
+    request.send();
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            // console.log(response);
+            document.getElementById("cart-body").innerHTML = response;
+        }
+    }
+}
+
+// cart item quantity increment
+function incrementCartQty(cartId){
+    let quantity = document.getElementById("qty-" + cartId).value;
+    let newQuantity = parseInt(quantity) + 1;
+    
+    let form = new FormData();
+    form.append("cartId", cartId);
+    form.append("newQuantity", newQuantity);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "processors/cart_qty_update.php", true);
+    request.send(form);
+
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let response = request.responseText;
+            // console.log(response);
+            if(response == "Success"){
+                quantity = newQuantity;
+                loadCart();
+            } else {
+                alert(response);
+            }
+        }
+    }
+}
+
+// cart item quantity decrement
+function decrementCartQty(cartId){
+    let quantity = document.getElementById("qty-" + cartId).value;
+    let newQuantity = parseInt(quantity) - 1;
+    
+    let form = new FormData();
+    form.append("cartId", cartId);
+    form.append("newQuantity", newQuantity);
+
+    if (newQuantity > 0) {
+        let request = new XMLHttpRequest();
+        request.open("POST", "processors/cart_qty_update.php", true);
+        request.send(form);
+
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                let response = request.responseText;
+                // console.log(response);
+                if(response == "Success"){
+                    quantity = newQuantity;
+                    loadCart();
+                } else {
+                    alert(response);
+                }
+            }
+        }
+    }
+}
+
+// cart item removal
+function removeCart(cartId) {
+    if (confirm("Are you sure you want to remove this item from cart?")) {
+        let form = new FormData();
+        form.append("cartId", cartId);
+
+        let request = new XMLHttpRequest();
+        request.open("POST", "processors/remove_cart.php", true);
+        request.send(form);
+
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                let response = request.responseText;
+                // console.log(response);
+                if(response == "Success"){
+                    reload();
+                } else {
+                    alert(response);
+                }
             }
         }
     }
