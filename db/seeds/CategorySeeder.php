@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Seed\AbstractSeed;
 
-class UserTypeSeeder extends AbstractSeed
+class CategorySeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -17,15 +17,14 @@ class UserTypeSeeder extends AbstractSeed
     public function run(): void
     {
         $data = [
-            [
-                'type' => 'Admin'
-            ],
-            [
-                'type' => 'User'
-            ]
+            ['name' => 'T-Shirts'],
+            ['name' => 'Jeans'],
+            ['name' => 'Sneakers'],
+            ['name' => 'Jackets'],
+            ['name' => 'Accessories']
         ];
 
-        $user_type = $this->table('user_type');
-        $user_type->insert($data)->save();
+        $table = $this->table('category');
+        $table->insert($data)->save();
     }
 }
